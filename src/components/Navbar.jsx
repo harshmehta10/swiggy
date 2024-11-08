@@ -6,20 +6,14 @@ function Navbar() {
     <>
       <header>
         <nav className="bg-white w-full shadow-xl  mb-3 ">
-          <div
-            className="flex justify-between items-center space-x-4 py-4 px-8 font-sans"
-            style={{
-              marginLeft: "calc(5% + 16px)",
-              marginRight: "calc(5% + 16px)",
-            }}
-          >
-            <div className="flex items-center px-6">
+          <div className="flex justify-between items-center space-x-4 py-4 px-8 font-sans">
+            <div className="flex items-center justify-around px-6">
               <img src={logo} alt="logo" className="h-12 w-8" />
               <button className="px-6">Others</button>
             </div>
 
-            <ul className="flex items-center space-x-6 px-8">
-              <li>
+            <ul className="flex items-center space-x-6 px-8 list-none">
+              <li className="cursor-pointer hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -50,7 +44,7 @@ function Navbar() {
                   <span>Swiggy Corporate</span>
                 </div>
               </li>
-              <li>
+              <li className="cursor-pointer  hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -66,7 +60,7 @@ function Navbar() {
                   <span>Search</span>
                 </div>
               </li>
-              <li>
+              <li className="cursor-pointer  hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -83,7 +77,7 @@ function Navbar() {
                 </div>
               </li>
 
-              <li>
+              <li className="cursor-pointer  hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -100,7 +94,7 @@ function Navbar() {
                 </div>
               </li>
 
-              <li>
+              <li className="cursor-pointer  hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -117,7 +111,7 @@ function Navbar() {
                 </div>
               </li>
 
-              <li>
+              <li className="cursor-pointer  hover:text-red-500">
                 <div className="flex items-center ">
                   <span className="px-2">
                     <svg

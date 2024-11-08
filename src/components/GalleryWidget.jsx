@@ -204,7 +204,7 @@ function GalleryWidget() {
             <img
               src={foods.src}
               alt={`Gallery Image ${index + 1}`}
-              className="h-40 object-cover"
+              className="h-44 object-cover"
             />
           </div>
         ))}
