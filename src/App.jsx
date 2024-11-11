@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import TopRestaurants from "./components/TopRestaurants";
 import Best from "./components/Best";
 import Restaurants from "./components/Restaurants";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Restaurants />
       <Best />
       <Footer />
+      <Login />
     </div>
   );
 }
