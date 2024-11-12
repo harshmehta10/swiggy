@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import burgerking from "../assets/burgerking.avif";
 import Chaayos from "../assets/Chaayos.avif";
 import chinesewok from "../assets/chinesewok.avif";
@@ -164,36 +164,81 @@ const Restaurants = () => {
       time: "10-20 mins",
     },
   ];
+
+  const [isSticky, setIsSticky] = useState(false);
+  const menuRef = useRef();
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsSticky(menuRef.current.getBoundingClientRect().top <= 0);
+      console.log(menuRef.current.getBoundingClientRect());
+    };
+    document.addEventListener("scroll", onScroll);
+
+    return () => {
+      document.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
-    <div className="mx-40">
+    <div className="mx-4 md:mx-10 lg:mx-32">
       <div>
-        <h1 className="font-gilroy-extraBold text-2xl font-semibold  my-2">
+        <h1 className="font-gilroy-extraBold text-lg md:text-xl lg:text-2xl font-semibold my-2">
           Restaurants with online food delivery in Noida
         </h1>
       </div>
-      <div>
-        <ul className="list-none flex space-x-2 my-4">
-          <li className="border rounded-2xl px-2 py-1">Filter</li>
-          <li className="border rounded-2xl px-2 py-1">Sort By</li>
-          <li className="border rounded-2xl px-2 py-1">Fast Delivery</li>
-          <li className="border rounded-2xl px-2 py-1">New on Swiggy</li>
-          <li className="border rounded-2xl px-2 py-1">Rating 4.0+</li>
-          <li className="border rounded-2xl px-2 py-1">Pure Veg</li>
-          <li className="border rounded-2xl px-2 py-1">Offers</li>
-          <li className="border rounded-2xl px-2 py-1">Rs. 300-Rs. 600</li>
-          <li className="border rounded-2xl px-2 py-1">Less than Rs.300</li>
+      <div
+        className={`sticky top-0 inset-x-0 ${
+          isSticky && "bg-white -mx-4 md:-mx-10 lg:-mx-32"
+        }`}
+        ref={menuRef}
+      >
+        <ul
+          className={`list-none flex items-start gap-2 mb-10 mt-6 ${
+            isSticky && "py-5 shadow-2xl px-6"
+          }`}
+        >
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Filter
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Sort By
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Fast Delivery
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            New on Swiggy
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Rating 4.0+
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Pure Veg
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Offers
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Rs. 300-Rs. 600
+          </li>
+          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
+            Less than Rs.300
+          </li>
         </ul>
       </div>
-      <div className="grid grid-cols-4 content-start gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 ">
         {foods.map((food, index) => (
-          <div key={index}>
+          <div key={index} className="flex flex-col items-start">
             <img
               src={food.src}
               alt={`Gallery Image ${index + 1}`}
-              className=" h-32 w-56 object-cover rounded-xl shadow-lg my-2" // Adjusted classes for image styling
+              className="h-40 sm:h-48 md:h-56 lg:h-32 w-full object-cover rounded-xl shadow-lg"
             />
-            <h1 className="font-gilroy-extraBold text-xl mt-2">{food.Name}</h1>
-            <div className="flex items-center text-base font-normal space-x-1">
+            <h1 className="font-gilroy-extraBold text-base md:text-lg lg:text-xl mt-2">
+              {food.Name}
+            </h1>
+            <div className="flex items-center text-sm md:text-base font-normal space-x-1">
               <svg
                 width="20"
                 height="20"

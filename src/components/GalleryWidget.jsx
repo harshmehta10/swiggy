@@ -176,35 +176,36 @@ function GalleryWidget() {
   };
 
   return (
-    <div
-      className="mt-6"
-      style={{
-        marginLeft: "calc(10% + 36px)",
-        marginRight: "calc(10% + 36px)",
-      }}
-    >
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="font-gilroy-extraBold text-2xl font-semibold">
+    <div className="mt-6 px-4 sm:px-10 lg:px-16 xl:px-24 lg:mx-10 md:mx-5 sm:mx-2">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4 space-y-4 sm:space-y-0">
+        <h2 className="font-gilroy-extraBold text-xl sm:text-2xl font-semibold text-center sm:text-left">
           What's on your mind?
         </h2>
 
-        <div className="flex space-x-2">
-          <button onClick={handlePrev} className="text-2xl rounded-full">
+        <div className="flex justify-center space-x-2">
+          <button
+            onClick={handlePrev}
+            className="text-xl sm:text-2xl rounded-full"
+          >
             <BsArrowLeftCircleFill />
           </button>
 
-          <button onClick={handleNext} className="text-2xl rounded-full">
+          <button
+            onClick={handleNext}
+            className="text-xl sm:text-2xl rounded-full"
+          >
             <BsArrowRightCircleFill />
           </button>
         </div>
       </div>
+
       <Slider ref={sliderRef} {...settings}>
-        {foods.map((foods, index) => (
+        {foods.map((food, index) => (
           <div key={index} className="px-2">
             <img
-              src={foods.src}
+              src={food.src}
               alt={`Gallery Image ${index + 1}`}
-              className="h-44 object-cover"
+              className="h-36 sm:h-32 lg:h-44   object-cover "
             />
           </div>
         ))}

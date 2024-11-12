@@ -19,7 +19,6 @@ function App() {
       <Restaurants />
       <Best />
       <Footer />
-      <Login />
     </div>
   );
 }
