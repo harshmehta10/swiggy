@@ -212,11 +212,11 @@ const TopRestaurants = () => {
       sliderRef.current.slickNext();
     }
   };
-
+  // flex flex-col md:flex-row justify-between items-center mb-4 space-y-4 md:space-y-
   return (
     <div className="mt-6 mx-4 md:mx-10 lg:mx-32">
-      <div className="flex flex-col md:flex-row justify-between items-center mb-4 space-y-4 md:space-y-0">
-        <h2 className="font-gilroy-extraBold text-xl md:text-2xl font-semibold text-center md:text-left">
+      <div className="flex items-center justify-between sm:items-center sm:flex mb-4">
+        <h2 className="font-gilroy-extraBold lg:text-2xl md:text-2xl font-semibold text-center md:text-left sm:text-xl">
           Top restaurant chains in Noida
         </h2>
         <div className="flex justify-center space-x-2">

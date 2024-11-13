@@ -174,10 +174,10 @@ function GalleryWidget() {
     borderRadius: "75px",
     background: "#d7d5d5",
   };
-
+  // lg:flex flex-col sm:flex justify-between items-center mb-4 space-y-4 sm:space-y-0
   return (
     <div className="mt-6 px-4 sm:px-10 lg:px-16 xl:px-24 lg:mx-10 md:mx-5 sm:mx-2">
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-4 space-y-4 sm:space-y-0">
+      <div className="flex items-center justify-between">
         <h2 className="font-gilroy-extraBold text-xl sm:text-2xl font-semibold text-center sm:text-left">
           What's on your mind?
         </h2>
