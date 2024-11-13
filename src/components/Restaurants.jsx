@@ -181,52 +181,47 @@ const Restaurants = () => {
   }, []);
 
   return (
-    <div className="mx-4 md:mx-10 lg:mx-32">
+    <div className="mx-4 sm:mx-6 md:mx-10 lg:mx-32">
       <div>
-        <h1 className="font-gilroy-extraBold text-lg md:text-xl lg:text-2xl font-semibold my-2">
+        <h1 className="font-gilroy-extraBold text-base sm:text-lg md:text-xl lg:text-2xl font-semibold my-2">
           Restaurants with online food delivery in Noida
         </h1>
       </div>
+
       <div
-        className={`sticky top-0 inset-x-0 ${
-          isSticky && "bg-white -mx-4 md:-mx-10 lg:-mx-32"
+        className={`sticky top-0 inset-x-0 z-50 ${
+          isSticky
+            ? "bg-white shadow-md -mx-4 sm:-mx-6 md:-mx-10 lg:-mx-32"
+            : ""
         }`}
         ref={menuRef}
       >
         <ul
-          className={`list-none flex items-start gap-2 mb-10 mt-6 ${
-            isSticky && "py-5 shadow-2xl px-6"
+          className={`list-none flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6 mb-10 mt-6 ${
+            isSticky ? "py-3 px-4 sm:px-6 md:px-8 lg:px-10" : ""
           }`}
         >
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Filter
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Sort By
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Fast Delivery
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            New on Swiggy
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Rating 4.0+
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Pure Veg
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Offers
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Rs. 300-Rs. 600
-          </li>
-          <li className="border whitespace-nowrap rounded-2xl px-2 py-1 text-sm md:text-base cursor-pointer">
-            Less than Rs.300
-          </li>
+          {[
+            "Filter",
+            "Sort By",
+            "Fast Delivery",
+            "New on Swiggy",
+            "Rating 4.0+",
+            "Pure Veg",
+            "Offers",
+            "Rs. 300-Rs. 600",
+            "Less than Rs.300",
+          ].map((item, index) => (
+            <li
+              key={index}
+              className="border whitespace-nowrap rounded-2xl px-3 py-1 text-xs sm:text-sm md:text-base cursor-pointer hover:bg-gray-100"
+            >
+              {item}
+            </li>
+          ))}
         </ul>
       </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 ">
         {foods.map((food, index) => (
           <div key={index} className="flex flex-col items-start">

@@ -1,35 +1,61 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
-import Login from "./Login";
-import LoginComponent from "./LoginComponent";
 import LoginV2 from "./LoginV2";
 import { AnimatePresence } from "framer-motion";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // For mobile menu
 
-  // Toggle login panel visibility and animation
   const handleOpen = () => {
     setIsOpen(true);
   };
 
-  // Close the login panel with animation
   const handleClose = () => {
     setIsOpen(false);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
     <>
       <header>
-        <nav className="bg-white w-full shadow-xl  mb-3  z-10">
-          <div className="flex justify-between items-center space-x-4 py-4 px-8 font-sans">
-            <div className="flex items-center justify-around px-6">
-              <img src={logo} alt="logo" className="h-12 w-8" />
-              <button className="px-6">Others</button>
+        <nav className="bg-white shadow-xl w-full z-10">
+          <div className="flex justify-between items-center py-4 px-6">
+            {/* Logo and Hamburger */}
+            <div className="flex items-center space-x-2">
+              <img src={logo} alt="logo" className="h-10 w-auto" />
+              <h2 className="underline">Other</h2>
+              <button
+                className="lg:hidden ml-4 text-gray-600 focus:outline-none"
+                onClick={toggleMenu}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d={
+                      menuOpen
+                        ? "M6 18L18 6M6 6l12 12"
+                        : "M4 6h16M4 12h16m-7 6h7"
+                    }
+                  />
+                </svg>
+              </button>
             </div>
 
-            <ul className="flex items-center space-x-6 px-8 list-none">
+            {/* Desktop Menu */}
+            <ul className="hidden lg:flex space-x-8 items-center">
               <li className="cursor-pointer hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
@@ -61,7 +87,7 @@ function Navbar() {
                   <span>Swiggy Corporate</span>
                 </div>
               </li>
-              <li className="cursor-pointer  hover:text-red-500">
+              <li className="cursor-pointer hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -77,7 +103,7 @@ function Navbar() {
                   <span>Search</span>
                 </div>
               </li>
-              <li className="cursor-pointer  hover:text-red-500">
+              <li className="cursor-pointer hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -93,8 +119,7 @@ function Navbar() {
                   <span>Offers</span>
                 </div>
               </li>
-
-              <li className="cursor-pointer  hover:text-red-500">
+              <li className="cursor-pointer hover:text-red-500">
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -110,9 +135,10 @@ function Navbar() {
                   <span>Help</span>
                 </div>
               </li>
-
-              {/* Sign In button */}
-              <li className="cursor-pointer" onClick={handleOpen}>
+              <li
+                className="cursor-pointer hover:text-red-500 "
+                onClick={handleOpen}
+              >
                 <div className="flex items-center">
                   <span className="px-2">
                     <svg
@@ -128,8 +154,7 @@ function Navbar() {
                   <span className="hover:text-red-500">Sign In</span>
                 </div>
               </li>
-
-              <li className="cursor-pointer  hover:text-red-500">
+              <li className="py-2 cursor-pointer hover:text-red-500">
                 <div className="flex items-center ">
                   <span className="px-2">
                     <svg
@@ -147,10 +172,30 @@ function Navbar() {
               </li>
             </ul>
           </div>
+
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <ul className="flex flex-col lg:hidden bg-white px-6 pb-4">
+              <li className="py-2 cursor-pointer hover:text-red-500">
+                Swiggy Corporate
+              </li>
+              <li className="py-2 cursor-pointer hover:text-red-500">Search</li>
+              <li className="py-2 cursor-pointer hover:text-red-500">Offers</li>
+              <li className="py-2 cursor-pointer hover:text-red-500">Help</li>
+              <li
+                className="py-2 cursor-pointer hover:text-red-500 "
+                onClick={handleOpen}
+              >
+                Sign In
+              </li>
+              <li className="py-2 cursor-pointer hover:text-red-500">Cart</li>
+            </ul>
+          )}
         </nav>
+
+        {/* Login Modal */}
         <AnimatePresence>
-          {/* Conditionally render Login component with animation */}
-          {isOpen && <LoginV2 handleClose={handleClose} />}
+          {isOpen && <LoginV2 isOpen={isOpen} handleClose={handleClose} />}
         </AnimatePresence>
       </header>
     </>
